@@ -3,7 +3,7 @@ package informer
 import (
 	"errors"
 	"github.com/creasty/defaults"
-	)
+)
 
 var informer Logger
 
@@ -52,11 +52,11 @@ type Logger interface {
 // Configuration stores the config for the Logger
 // For some loggers there can only be one level across writers, for such the level of Console is picked by default
 type Configuration struct {
-	EnableConsole     bool `default:"true"`
-	ConsoleJSONFormat bool `default:"false"`
+	EnableConsole     bool   `default:"true"`
+	ConsoleJSONFormat bool   `default:"false"`
 	ConsoleLevel      string `default:"informer.Debug"`
-	EnableFile        bool `default:"true"`
-	FileJSONFormat    bool `default:"true"`
+	EnableFile        bool   `default:"true"`
+	FileJSONFormat    bool   `default:"true"`
 	FileLevel         string `default:"informer.Debug"`
 	FileLocation      string `default:"log.log"`
 }
