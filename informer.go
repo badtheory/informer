@@ -62,7 +62,7 @@ type Configuration struct {
 }
 
 //NewLogger returns an instance of Logger
-func NewLogger(config Configuration, loggerInstance int) error {
+func NewLogger(config *Configuration, loggerInstance int) error {
 
 	if err := defaults.Set(&config); err != nil {
 		panic(err)
