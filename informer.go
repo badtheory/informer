@@ -56,7 +56,7 @@ type Configuration struct {
 	ConsoleJSONFormat bool `default:"false"`
 	ConsoleLevel      string `default:"informer.Debug"`
 	EnableFile        bool `default:"true"`
-	FileJSONFormat    bool `default:"false"`
+	FileJSONFormat    bool `default:"true"`
 	FileLevel         string `default:"informer.Debug"`
 	FileLocation      string `default:"log.log"`
 }
