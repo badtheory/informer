@@ -1,6 +1,9 @@
 package informer
 
-import "errors"
+import (
+	"errors"
+	"github.com/creasty/defaults"
+	)
 
 var informer Logger
 
@@ -49,17 +52,22 @@ type Logger interface {
 // Configuration stores the config for the Logger
 // For some loggers there can only be one level across writers, for such the level of Console is picked by default
 type Configuration struct {
-	EnableConsole     bool
-	ConsoleJSONFormat bool
-	ConsoleLevel      string
-	EnableFile        bool
-	FileJSONFormat    bool
-	FileLevel         string
-	FileLocation      string
+	EnableConsole     bool `default:"true"`
+	ConsoleJSONFormat bool `default:"false"`
+	ConsoleLevel      string `default:"informer.Debug"`
+	EnableFile        bool `default:"true"`
+	FileJSONFormat    bool `default:"false"`
+	FileLevel         string `default:"informer.Debug"`
+	FileLocation      string `default:"log.log"`
 }
 
 //NewLogger returns an instance of Logger
 func NewLogger(config Configuration, loggerInstance int) error {
+
+	if err := defaults.Set(&config); err != nil {
+		panic(err)
+	}
+
 	if loggerInstance == InstanceZapLogger {
 		logger, err := newZapLogger(config)
 		if err != nil {
