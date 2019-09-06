@@ -1,4 +1,4 @@
-module informer
+module github.com/badtheory/informer
 
 go 1.12
 
